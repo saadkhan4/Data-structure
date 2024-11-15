@@ -1,40 +1,36 @@
+#include <cs50.h>
 #include <stdlib.h>
 #include <stdio.h>
-// we are resizing the array in this file//
 
-int main(void)
+typedef struct node
 {
-    int *list = malloc(3 * sizeof(int));  //we used size of an int cuz 3 gonna multiply size of int and gives me 12 spaces in memory//
-    if (list == NULL)
+    int number;                           // basic intergers//
+    struct node *next;                    // this means to point to other nodes//
+} node;
+
+int main(int argc, char *argv[])
+{
+
+    node *list = NULL;                    //best way to start the linked list//
+    for (int i = 0; i < argc; i++)
     {
-        return 1;
+        int number = atoi(argv[i]);       //just to put the values in argv & atoi is convert the number into string from their integer value.//
+
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            //free memory thus far//
+            return 1;
+        }
+        n->number = number;               // n-> go to chunk of memory and update that number & =number is what the human type for on line no: 17.//
+        n->next = list;                   // it is pointing on the next list//
+        list = n;                         // now it update the list to point n//
     }
-
-    list[0] = 1;
-    list[1] = 2;
-    list[2] = 3;
-
-    int *tmp = malloc(4 * sizeof(int)); // we used this suppose we forgot now we need more memory so we did this//
-    if (tmp == NULL)
+  // print whole list//
+    node *ptr = list;
+    while (ptr != NULL)
     {
-        free(list);        // we have to free the early memory first so this code won't abort//
-        return 1;
+        printf("%i\n", ptr->number);
+        ptr = ptr->next;
     }
-
-    for (int i = 0; i < 3; i++)
-    {
-        tmp[i] = list[i];   // it gonna copy the data of first array into this size of an array.//
-    }
-
-    tmp[3] = 4; // we just put the value of 4 into the array//
-    free(list);
-    list = tmp;
-
-    for (int i = 0; i < 3; i++)
-    {
-        printf("%i\n", list[i]);
-    }
-
-    free(list);
-    return 0;
 }
