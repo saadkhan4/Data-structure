@@ -1,6 +1,8 @@
 #include <cs50.h>
 #include <stdlib.h>
 #include <stdio.h>
+  
+// this is the code of prepending data structure.//
 
 typedef struct node
 {
@@ -26,7 +28,7 @@ int main(int argc, char *argv[])
         n->next = list;                   // it is pointing on the next list//
         list = n;                         // now it update the list to point n//
     }
-  // print whole list//
+  // print whole list///
     node *ptr = list;
     while (ptr != NULL)
     {
@@ -34,3 +36,5 @@ int main(int argc, char *argv[])
         ptr = ptr->next;
     }
 }
+
+

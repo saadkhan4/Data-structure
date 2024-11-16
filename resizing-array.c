@@ -35,6 +35,6 @@ int main(void)
         printf("%i\n", list[i]);
     }
 
-    free(list);  // we have just free the original memory//
+    free(list);  // we just have free the original memory//
     return 0;
 }
