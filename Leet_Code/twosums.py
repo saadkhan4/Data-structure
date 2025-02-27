@@ -15,5 +15,27 @@ def two_sums(nums, target):
 result = two_sums(nums, target)
 print(result)
 
-        
+
+nums = [2,4,10,3,15]
+target = 14
+
+def two_sums(nums,target):
+    seen = {}
+    for i in range(len(nums)):
+        diff = target - nums[i]
+        if diff in seen:
+            return [seen[diff],i]
+        else:
+            seen[nums[i]] = i
+
+
+result = two_sums(nums,target)
+print(result)
+
+
+
+
+
+
+
 
